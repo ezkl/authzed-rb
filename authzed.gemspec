@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   }
 
   s.require_paths = ["lib"]
-  s.required_ruby_version = [">= 2.7", "~> 3.1.2", "< 3.2"]
+  s.required_ruby_version = ["~> 2.7.6", "~> 3.1.2", "< 3.2"]
 
   s.add_runtime_dependency "grpc", "~> 1.46"
   s.add_development_dependency "rspec", "~> 3.0"
