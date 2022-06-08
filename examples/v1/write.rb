@@ -1,8 +1,26 @@
 require 'authzed'
 
+# SOURCE: https://docs.authzed.com/guides/first-app#defining-and-applying-a-schema
+schema = <<~SCHEMA
+  definition blog/user {}
+
+  definition blog/post {
+    relation reader: blog/user
+    relation writer: blog/user
+
+    permission read = reader + writer
+    permission write = writer
+  }
+SCHEMA
+
 client = Authzed::Api::V1::Client.new(
-  target: 'grpc.authzed.com:443',
+  target: 'localhost:50051',
+  credentials: :this_channel_is_insecure,
   interceptors: [Authzed::GrpcUtil::BearerToken.new(token: 'mytoken')],
+)
+
+resp = client.schema_service.write_schema(
+  Authzed::Api::V1::WriteSchemaRequest.new(schema: schema)
 )
 
 emilia = Authzed::Api::V1::SubjectReference.new(

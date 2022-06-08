@@ -20,7 +20,8 @@ post_one = Authzed::Api::V1::ObjectReference.new(
 )
 
 client = Authzed::Api::V1::Client.new(
-  target: 'grpc.authzed.com:443',
+  target: 'localhost:50051',
+  credentials: :this_channel_is_insecure,
   interceptors: [Authzed::GrpcUtil::BearerToken.new(token: 'mytoken')],
 )
 
