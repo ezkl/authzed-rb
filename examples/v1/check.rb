@@ -32,7 +32,8 @@ resp = client.permissions_service.check_permission(
     subject: emilia, 
   )
 )
-raise unless resp.permissionship == CheckPermissionResponse::Permissionship::PERMISSIONSHIP_HAS_PERMISSION
+
+raise unless resp.permissionship == :PERMISSIONSHIP_HAS_PERMISSION
 
 resp = client.permissions_service.check_permission(
   Authzed::Api::V1::CheckPermissionRequest.new(
@@ -41,7 +42,7 @@ resp = client.permissions_service.check_permission(
     subject: emilia, 
   )
 )
-raise unless resp.permissionship == CheckPermissionResponse::Permissionship::PERMISSIONSHIP_HAS_PERMISSION
+raise unless resp.permissionship == :PERMISSIONSHIP_HAS_PERMISSION
 
 resp = client.permissions_service.check_permission(
   Authzed::Api::V1::CheckPermissionRequest.new(
@@ -50,7 +51,7 @@ resp = client.permissions_service.check_permission(
     subject: beatrice, 
   )
 )
-raise unless resp.permissionship == CheckPermissionResponse::Permissionship::PERMISSIONSHIP_HAS_PERMISSION
+raise unless resp.permissionship == :PERMISSIONSHIP_HAS_PERMISSION
 
 resp = client.permissions_service.check_permission(
   Authzed::Api::V1::CheckPermissionRequest.new(
@@ -59,4 +60,4 @@ resp = client.permissions_service.check_permission(
     subject: beatrice, 
   )
 )
-raise if resp.permissionship == CheckPermissionResponse::Permissionship::PERMISSIONSHIP_HAS_PERMISSION
+raise if resp.permissionship == :PERMISSIONSHIP_HAS_PERMISSION

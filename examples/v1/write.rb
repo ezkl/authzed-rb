@@ -42,7 +42,7 @@ post_one = Authzed::Api::V1::ObjectReference.new(
   object_id: "1"
 )
 
-client.permission_service.write_relationships(
+client.permissions_service.write_relationships(
   Authzed::Api::V1::WriteRelationshipsRequest.new(
     updates: [
       # Emilia is a Writer on Post 1
