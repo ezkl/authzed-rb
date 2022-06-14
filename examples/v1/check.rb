@@ -29,7 +29,7 @@ resp = client.permissions_service.check_permission(
   Authzed::Api::V1::CheckPermissionRequest.new(
     resource: post_one,
     permission: 'read',
-    subject: emilia, 
+    subject: emilia,
   )
 )
 
